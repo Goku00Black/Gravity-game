@@ -50,4 +50,16 @@ public class PlayerController : MonoBehaviour
     {
         moveSpeed = Mathf.Lerp(moveSpeed, maxSpeed, speedIncreaseRate * Time.deltaTime);
     }
+
+    public void ResetGravity()
+    {
+        isGravityInverted = false;
+        rb.gravityScale = gravityForce;
+
+        // Ensure player is upright
+        Vector3 newScale = transform.localScale;
+        newScale.y = Mathf.Abs(newScale.y);
+        transform.localScale = newScale;
+    }
+
 }
