@@ -17,14 +17,13 @@ public class MainMenu : MonoBehaviour
 
     public void OnLevel1()
     {
-        SceneManager.LoadScene("Endless"); // Make sure the scene name matches exactly
+        SceneTransitionManager.instance.LoadSceneWithFade("Endless");
     }
 
     public void OnLevel2()
     {
-        SceneManager.LoadScene("LocalPlayer");
+        SceneTransitionManager.instance.LoadSceneWithFade("LocalPlayer");
     }
-
     public void OnQuit()
     {
         Debug.Log("Quit Game");
