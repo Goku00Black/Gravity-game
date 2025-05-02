@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Animation Settings")]
     public Animator animator;
+    public EnemyAIController enemyAI; // Drag your enemy GameObject here in the Inspector
+
 
     private bool gameStarted = false;
 
@@ -32,6 +34,14 @@ public class PlayerController : MonoBehaviour
 
         // Start with idle animation
         animator.SetBool("isRunning", false);
+
+        gameStarted = true;
+        animator.SetBool("isRunning", true);
+
+        if (enemyAI != null)
+        {
+            enemyAI.StartChase(); // Start the enemy after player starts
+        }
     }
 
     private void Update()
