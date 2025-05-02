@@ -6,12 +6,10 @@ public class ShurikenTrap : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Player hit the shuriken trap!");
-
             PlayerDeathHandler deathHandler = collision.GetComponent<PlayerDeathHandler>();
             if (deathHandler != null)
             {
-                deathHandler.Die(); // Respawns the player
+                deathHandler.Die();
             }
         }
     }

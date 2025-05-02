@@ -18,9 +18,6 @@ public class PlayerController : MonoBehaviour
     [Header("Animation Settings")]
     public Animator animator;
 
-    [Header("Enemy Reference")]
-    public EnemyAIController enemyAI; // Drag your enemy in the inspector
-
     private bool gameStarted = false;
 
     private void Start()
@@ -29,21 +26,19 @@ public class PlayerController : MonoBehaviour
         rb.gravityScale = gravityForce;
 
         if (animator == null)
+        {
             animator = GetComponent<Animator>();
+        }
 
+        // Start with idle animation
         animator.SetBool("isRunning", false);
     }
 
     private void Update()
     {
-        // Start game on space press
         if (!gameStarted && Input.GetKeyDown(KeyCode.Space))
         {
-            gameStarted = true;
-            animator.SetBool("isRunning", true);
-
-            if (enemyAI != null)
-                enemyAI.StartChase(); // Starts enemy chase after player moves
+            StartGame();
         }
 
         if (!gameStarted) return;
@@ -59,7 +54,14 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (!gameStarted) return;
+
         rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocity.y);
+    }
+
+    private void StartGame()
+    {
+        gameStarted = true;
+        animator.SetBool("isRunning", true);
     }
 
     private void FlipGravity()
