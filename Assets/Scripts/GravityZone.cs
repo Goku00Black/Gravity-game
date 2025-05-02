@@ -3,6 +3,7 @@ using UnityEngine;
 public class GravityZone : MonoBehaviour
 {
     public float gravityForce = 9.8f;
+    public float cameraSizeChange = 2f; // Amount to change the camera size by
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,11 +16,19 @@ public class GravityZone : MonoBehaviour
                 float newGravity = rb.gravityScale > 0 ? -gravityForce : gravityForce;
                 rb.gravityScale = newGravity;
 
-                // Flip the player's visual scale to match
+                // Flip the player's visual scale to match gravity direction
                 Transform playerTransform = collision.transform;
                 Vector3 newScale = playerTransform.localScale;
                 newScale.y = Mathf.Abs(newScale.y) * Mathf.Sign(-rb.gravityScale);
                 playerTransform.localScale = newScale;
+
+                // Change the camera's orthographic size
+                Camera mainCamera = Camera.main;
+                if (mainCamera != null && mainCamera.orthographic)
+                {
+                    // Increase or decrease camera size based on gravity direction
+                    mainCamera.orthographicSize += (rb.gravityScale > 0) ? -cameraSizeChange : cameraSizeChange;
+                }
             }
         }
     }
