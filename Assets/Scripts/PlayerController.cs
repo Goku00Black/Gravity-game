@@ -18,7 +18,12 @@ public class PlayerController : MonoBehaviour
     [Header("Animation Settings")]
     public Animator animator;
 
+    [Header("Landing Effect")]
+    public ParticleSystem landingEffect; // <-- Add this in Inspector
+    public LayerMask groundLayer;        // <-- Set to the Ground layer
+
     private bool gameStarted = false;
+    private bool wasGroundedLastFrame = false;
 
     private void Start()
     {
@@ -26,11 +31,8 @@ public class PlayerController : MonoBehaviour
         rb.gravityScale = gravityForce;
 
         if (animator == null)
-        {
             animator = GetComponent<Animator>();
-        }
 
-        // Start with idle animation
         animator.SetBool("isRunning", false);
     }
 
@@ -56,6 +58,8 @@ public class PlayerController : MonoBehaviour
         if (!gameStarted) return;
 
         rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocity.y);
+
+        CheckLandingEffect();
     }
 
     private void StartGame()
@@ -72,11 +76,33 @@ public class PlayerController : MonoBehaviour
         Vector3 newScale = transform.localScale;
         newScale.y *= -1;
         transform.localScale = newScale;
+
+        // Optional: Reset landing check to avoid instant trigger
+        wasGroundedLastFrame = false;
     }
 
     private void IncreaseSpeed()
     {
         moveSpeed = Mathf.Lerp(moveSpeed, maxSpeed, speedIncreaseRate * Time.deltaTime);
+    }
+
+    private void CheckLandingEffect()
+    {
+        Vector2 origin = transform.position;
+        Vector2 direction = isGravityInverted ? Vector2.up : Vector2.down;
+        float distance = 0.1f;
+
+        bool isGrounded = Physics2D.Raycast(origin, direction, distance, groundLayer);
+
+        if (isGrounded && !wasGroundedLastFrame)
+        {
+            if (landingEffect != null)
+            {
+                landingEffect.Play();
+            }
+        }
+
+        wasGroundedLastFrame = isGrounded;
     }
 
     public void ResetGravity()

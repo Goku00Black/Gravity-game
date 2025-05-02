@@ -17,10 +17,10 @@ public class GravityZone : MonoBehaviour
                 rb.gravityScale = newGravity;
 
                 // Flip the player's visual scale to match gravity direction
-                Transform playerTransform = collision.transform;
-                Vector3 newScale = playerTransform.localScale;
-                newScale.y = Mathf.Abs(newScale.y) * Mathf.Sign(-rb.gravityScale);
-                playerTransform.localScale = newScale;
+                //Transform playerTransform = collision.transform;
+                //Vector3 newScale = playerTransform.localScale;
+                //newScale.y = Mathf.Abs(newScale.y) * Mathf.Sign(-rb.gravityScale);
+                //playerTransform.localScale = newScale;
 
                 // Change the camera's orthographic size
                 Camera mainCamera = Camera.main;
