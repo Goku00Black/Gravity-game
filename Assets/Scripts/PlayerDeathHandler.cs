@@ -17,7 +17,7 @@ public class PlayerDeathHandler : MonoBehaviour
     public void Die()
     {
         transform.position = respawnPoint != null ? respawnPoint.position : transform.position;
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
 
         if (playerController != null)
             playerController.ResetGravity();

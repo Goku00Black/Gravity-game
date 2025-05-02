@@ -13,16 +13,36 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 
     [Header("Input Settings")]
-    public KeyCode flipKey = KeyCode.W; // Assign different key for Player 2
+    public KeyCode flipKey = KeyCode.W;
+
+    [Header("Animation Settings")]
+    public Animator animator;
+
+    private bool gameStarted = false;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = gravityForce;
+
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
+
+        // Start with idle animation
+        animator.SetBool("isRunning", false);
     }
 
     private void Update()
     {
+        if (!gameStarted && Input.GetKeyDown(KeyCode.Space))
+        {
+            StartGame();
+        }
+
+        if (!gameStarted) return;
+
         if (Input.GetKeyDown(flipKey))
         {
             FlipGravity();
@@ -33,7 +53,15 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!gameStarted) return;
+
         rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocity.y);
+    }
+
+    private void StartGame()
+    {
+        gameStarted = true;
+        animator.SetBool("isRunning", true);
     }
 
     private void FlipGravity()
@@ -55,11 +83,6 @@ public class PlayerController : MonoBehaviour
     {
         isGravityInverted = false;
         rb.gravityScale = gravityForce;
-
-        // Ensure player is upright
-        Vector3 newScale = transform.localScale;
-        newScale.y = Mathf.Abs(newScale.y);
-        transform.localScale = newScale;
+        transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y), transform.localScale.z);
     }
-
 }
