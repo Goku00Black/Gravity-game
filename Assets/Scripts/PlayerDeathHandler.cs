@@ -2,11 +2,8 @@ using UnityEngine;
 
 public class PlayerDeathHandler : MonoBehaviour
 {
-    public Transform respawnPoint;
     private Rigidbody2D rb;
     private PlayerController playerController;
-
-    public EnemyAIController enemy; // drag and drop the enemy reference in inspector
 
     private void Start()
     {
@@ -16,13 +13,18 @@ public class PlayerDeathHandler : MonoBehaviour
 
     public void Die()
     {
-        transform.position = respawnPoint != null ? respawnPoint.position : transform.position;
-        rb.linearVelocity = Vector2.zero;
+        // Stop movement
+        if (rb != null)
+            rb.linearVelocity = Vector2.zero;
 
+        // Optional: Reset gravity if needed
         if (playerController != null)
             playerController.ResetGravity();
 
-        if (enemy != null)
-            enemy.StartChase(); // Tell the enemy to start
+        // Disable the player GameObject
+        gameObject.SetActive(false);
+
+        // Optional: Trigger game over UI or scene reload here
+        Debug.Log("Player has died.");
     }
 }
