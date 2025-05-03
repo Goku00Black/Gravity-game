@@ -9,6 +9,10 @@ TagManager:
   - Roof
   - Level
   - Change
+  - Suriken
+  - Spikes
+  - Player1
+  - Player2
   layers:
   - Default
   - TransparentFX

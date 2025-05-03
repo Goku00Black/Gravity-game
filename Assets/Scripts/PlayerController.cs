@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem landingEffect; // <-- Add this in Inspector
     public LayerMask groundLayer;        // <-- Set to the Ground layer
 
+    public GameObject gameOverScreen;  // The Game Over UI (set in the Inspector)
+
     private bool gameStarted = false;
     private bool wasGroundedLastFrame = false;
 
@@ -110,5 +112,24 @@ public class PlayerController : MonoBehaviour
         isGravityInverted = false;
         rb.gravityScale = gravityForce;
         transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y), transform.localScale.z);
+    }
+
+    // Called when the player dies
+    public void Die()
+    {
+        // Stop movement
+        rb.linearVelocity = Vector2.zero;
+
+        // Show Game Over screen
+        if (gameOverScreen != null)
+        {
+            gameOverScreen.SetActive(true);
+        }
+
+        // Disable the player GameObject
+        gameObject.SetActive(false);
+
+        // Optional: Trigger game over UI or scene reload here
+        Debug.Log("Player has died.");
     }
 }

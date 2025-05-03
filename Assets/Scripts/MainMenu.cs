@@ -2,28 +2,38 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+
 public class MainMenu : MonoBehaviour
 {
     public GameObject levelSelectPanel; // Assign in Inspector
-    public Button playButton;                   // Assign in Inspector
+    public Button playButton;           // Assign in Inspector
     public Button quitButton;
+
+    void Start()
+    {
+
+        // Hide level select initially
+        if (levelSelectPanel != null)
+            levelSelectPanel.SetActive(false);
+    }
 
     public void OnPlayButton()
     {
-        levelSelectPanel.SetActive(true); // Show Level 1 & Level 2 buttons
-        playButton.interactable = false;        // Disable Play
+        levelSelectPanel.SetActive(true);     // Show Level Select
+        playButton.interactable = false;      // Disable buttons
         quitButton.interactable = false;
     }
 
     public void OnLevel1()
     {
-        SceneTransitionManager.instance.LoadSceneWithFade("Endless");
+        SceneManager.LoadScene("Endless");
     }
 
     public void OnLevel2()
     {
-        SceneTransitionManager.instance.LoadSceneWithFade("LocalPlayer");
+        SceneManager.LoadScene("LocalPlayer");
     }
+
     public void OnQuit()
     {
         Debug.Log("Quit Game");
@@ -34,3 +44,4 @@ public class MainMenu : MonoBehaviour
 #endif
     }
 }
+

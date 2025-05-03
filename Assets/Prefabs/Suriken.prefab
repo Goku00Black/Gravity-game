@@ -11,12 +11,11 @@ GameObject:
   - component: {fileID: 9199930143473804220}
   - component: {fileID: 528294866088647024}
   - component: {fileID: 3416869837818681489}
-  - component: {fileID: 4508804457870301375}
   - component: {fileID: 9177082238955879814}
-  - component: {fileID: 2509575847504343658}
+  - component: {fileID: -312819526558798624}
   m_Layer: 0
   m_Name: Suriken
-  m_TagString: Untagged
+  m_TagString: Suriken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,18 +112,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4508804457870301375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7989736619373528789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dc7b38c084585d458232b25e2e19820, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &9177082238955879814
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -161,7 +148,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.515625
---- !u!114 &2509575847504343658
+--- !u!114 &-312819526558798624
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,6 +157,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7989736619373528789}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01d119991d97fed4c823b97dcfca553f, type: 3}
+  m_Script: {fileID: 11500000, guid: eab722142efb5fc47baea977bf1ff169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trapTag: Player

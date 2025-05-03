@@ -11,12 +11,11 @@ GameObject:
   - component: {fileID: 6064832793673292132}
   - component: {fileID: 7509836795745604387}
   - component: {fileID: 7157076188548738472}
-  - component: {fileID: 157232402486238052}
   - component: {fileID: 153513137011374435}
-  - component: {fileID: 676413255046014134}
+  - component: {fileID: 9081422347275938130}
   m_Layer: 0
   m_Name: Spike
-  m_TagString: Untagged
+  m_TagString: Spikes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,19 +112,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &157232402486238052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6392364676821611152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dafa45d7bb7a6f418a20a4ab115115a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respawnPoint: {fileID: 0}
 --- !u!60 &153513137011374435
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -180,7 +166,7 @@ PolygonCollider2D:
       - {x: 0.5, y: 0.1875}
       - {x: 0.40625, y: 0.28958383}
   m_UseDelaunayMesh: 0
---- !u!114 &676413255046014134
+--- !u!114 &9081422347275938130
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,6 +175,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6392364676821611152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01d119991d97fed4c823b97dcfca553f, type: 3}
+  m_Script: {fileID: 11500000, guid: eab722142efb5fc47baea977bf1ff169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trapTag: Player
