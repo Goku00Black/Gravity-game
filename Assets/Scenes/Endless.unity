@@ -37224,7 +37224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  speedIncreaseRate: 0.1
+  speedIncreaseRate: 0.05
   maxSpeed: 20
   gravityForce: 8.5
   flipKey: 119
