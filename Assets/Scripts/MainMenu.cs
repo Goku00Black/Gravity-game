@@ -34,6 +34,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("LocalPlayer");
     }
 
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
     public void OnQuit()
     {
         Debug.Log("Quit Game");
